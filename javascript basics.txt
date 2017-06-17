@@ -1,0 +1,190 @@
+JAVASCRIPT PROGRAMMING ESSENTIALS
+
+// Comment in javascript
+"word".length - determine word length
+
+confirm("XXX XXX") - posts a dialogue box that needs responding to, i.e. ok.
+
+DATA TYPES
+2 different types of data -
+1. Numbers: 43, 412, 
+2. Strings: "4", "Where is it?"
+
+BOOLEAN OPERATORS - True / False logic statements
+
+PRINT OUT console.log("XXX") - prints out what's in the brackets.
+
+COMPARISONS: > < >= <= === !==
+
+IF STATEMENT: if () {---} else {---}
+
+MODULO - % - gives the reminder of a devision, e.g. 23 % 10 = 3. - great for testing divisibility!
+
+(10 % 5 === 0) - true!!
+
+STRING MANIPULATION
+
+"XXX".substring(x,y) - takes letter after 'x' to letter before 'y' and prints it 
+
+DECLARING VARIABLES
+
+var Varname = value;
+
+prompt() for a response
+confirm() for a message box.
+
+DECLARING FUNCTION
+
+var functionName = function(inputs) - inputs the number into the function.
+functionName(inputs) - calling said function
+
+lowerCamelCase - convention for naming functions.
+Joined string - concatenation
+
+return - returns value of function. Do not use an = sign (i.e. return = x + 7)
+
+GLOBAL VS LOCAL
+
+global - available everywhere
+local - only available in function.
+** declaring anew the same variable within the function WILL NOT OVERWRITE the original value.
+
+Math.random - assigns randomly 0 or 1 value.
+
+IF : if () {} else if () {} else {};
+FOR : for (var i = 1; i < 11; i = i + 1){
+
+ DATA: var  = [x, y, z, "string"];
+array[3] - calling data.
+
+RANDOM 0 or 1 - Math.floor(Math.random() * 2); - functions returns clean random 0 or 1. 
+
+while () {};
+do {} while (); - allows minimum one iteration (the do brackets).
+
+isNaN() - Number checker!!!
+
+switch (input) {
+	case 'input1'
+		//code here
+		break;
+	case 'input2'
+		//code here
+		break;
+	default:
+		//code here
+	}
+
+&& and || or ! not
+.toUpperCase - converts everything to uppercase.
+
+heterogeneous array - [12 "max" 7]
+
+OBJECT LITERAL NOTATION
+
+var myObj = {
+    type: 'fancy',
+    disposition: 'sunny'
+};
+
+var emptyObj = {};
+
+
+OBJECT CONSTRUCTION
+var myObj = new Object();
+myObj.test1 = 1;
+myObj.test2 = 2;
+
+METHODS
+
+object.method = function (inputs) {}
+
+function as applied to an object property:
+1. Overwrite object property.
+2. Perform calculations on object properties.
+
+How to call a method:
+
+objectName.methodName(input)
+
+//THIS IS USING CONSTRUCTOR FORM TO BUILD THE OBJECT.
+
+ADDING TO OBJECTS:
+
+var friends = {
+    bill: {},
+    steve: {},
+    mick: {}
+}
+
+//THIS IS USING OBJECT LITERAL NOTATION
+
+OR
+
+friends[bill] = {};
+friends.steve = {};
+
+OR 
+
+var friends = new Object();
+friends.bill = new Object();
+friends.steve = new Object();
+
+objectName.propertyName - use of "dot notation" to access a property of an object
+objectName["PropertyName"] - use of "bracket notation" - don't forget the ""!
+
+FOR / IN LOOPS
+
+for (variable in object) {...coding...};
+
+this - placeholder that refers to whatever object calls the function. e.g. this.property
+
+e.g. 
+define a function: var setProperty = function(input) {this.property = xxx} ;
+define method using function in a constructor: e.g. bob.Property = setProperty;
+apply it: bob.setProperty(input)
+
+CUSTOM CONSTRUCTORS
+
+function Constructor(input1, input2) {
+  this.property1 = value1;
+  this.property2 = value2;
+}
+
+var newVar = new Constructor(value1, value2);
+
+typeOf var = declares the type of an var - could be object, function, string or value. 
+hasOwnProperty("property") - checks whether object has a given property called "property"
+
+IN can be used to loop over all properties in an object! Note, they don't have to be called properties here!
+
+for(var property in dog) {
+  console.log(property);
+}
+
+Note this returns the property name, and not the associated values.
+
+for(var x in dog) {
+console.log(dog[x]);
+}
+
+This returns the associated value, by using bracket notation and a variable.
+
+ADD METHOD TO ALL OF A GIVEN CLASS: USING PROTOTYPE
+
+className.prototype.newMethod = function() {
+statements;
+};
+
+WHEREAS ADD METHOD TO ONLY SINGLE OBJECT:
+
+object.newMethod = function () {
+statements;
+};
+
+PRIVATE VS PUBLIC VARIABLES -
+The variables hidden within a constructor are private, not accessible outside of the class.
+e.g. 
+this.myAge - public variable
+'var myAge - private variable
+use public methods to access private variables within a class!

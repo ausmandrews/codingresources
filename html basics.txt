@@ -1,0 +1,22 @@
+<!-- --> Comments in html
+
+<a href="XX">LINK HERE </a>
+
+<link_to>
+<!-- use this generate links (param1 = link text, param2 = URL-->
+
+FORM USEAGE:
+
+<form role="form">
+          <div class="form-group">
+            <p class="email-error"></p>
+            <input type="email" class="form-control" id="email" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <p class="password-error"></p>
+            <input type="password" class="form-control" id="password" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-default">Sign in</button>
+        </form>      
+
+<!-- consider carefully use of all form inputs! -->

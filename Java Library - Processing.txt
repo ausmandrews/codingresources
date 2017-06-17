@@ -1,0 +1,18 @@
+JAVA LIBRARY - PROCESSING
+
+.resize(0, height)
+
+// method
+// height - is the height of the canvas
+// 0 indicates for java to calculate the dimension to resize according to keeping them in ratio.
+
+coding colours:
+
+// rgb(0-255,0-255,0-255
+// codded in colours, red, green & blue
+// search google html "rgb colour selectors" to pick them.
+
+convert to integers:
+
+// (int)(ratio*255) 
+// brackets the (int) first

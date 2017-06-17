@@ -1,0 +1,4 @@
+RUBY ON RAILS COURSE 1 - INTRODUCTION
+
+https://github.com/jhu-ep-coursera/fullstack-course1-module1
+// Course 1 - Git Repository

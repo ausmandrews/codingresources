@@ -1,0 +1,224 @@
+JAVA - COURSE 2 - DATA STRUCTURES AND OPTIMIZING PERFORMANCE
+
+STRINGS
+
+// Strings get created as objects on the heap.
+// Strings are "Immutable" ! This means that they cannot be changed once created on the heap.
+e.g.
+s1 = "example A"; // new string on heap
+s2 = s1`;	  // same string on heap
+s1 + s2           // new string created on heap!
+s1.concat(s2)
+
+// .equals() VS == 
+// s1.equals(s2) : compares the two value by value
+// s1 == s2 : checks whether the same reference / address is referenced!
+// NOTE: Always use .equals() for a safe result!!
+
+USEFUL STRING METHODS
+
+.length
+// number of characters in string
+
+.toCharArray
+// returns the characters in a strint as a char[] array. 
+// NOTE, this is different. Original String object unaffected.
+
+
+char .charAt(int i)
+// returns character at given index i. characters are primitives 
+// ( == works). Cannot use .equals() as char type return does not have .equals.
+
+.indexOf(String str)
+// returns first position index of string if found in text.
+// NOTE 
+
+.split(regex)
+// eg split on the pattern " ".
+// use parenthesis on regular expressions when unsure of binding rules e.g. "i(t+)"
+// this will return an array of strings with 
+
+.getTokens("a+")
+// returns the splitter takens that match the reg ex.
+
+equalsIgnoreCase() / toLowerCase / toUpperCase 
+// helps deal with case incensitive functions.
+
+REGULAR EXPRESSIONS
+//Expression of a pattern trying to match. e.g. " "
+
+CONSIDER TOKENS...
+
+Repetition
+" +"
+// match against one OR MORE spaces in a row. 
+// => Does not result in empty array elements with consecutive spaces "  "
+
+Concatenation
+"(it)+"
+// matches "it" or "itit" etc
+"it*"
+// matches agains 0 or more "t's"
+
+Alternation
+"it|st"
+// matches either expression "it" or "st"
+
+"[123]" ["[a-f]"
+// match any single character in matrix. 
+// any between a and f.
+"[^a-z123]"
+// do not match any expressions a to z, 1, 2, or 3 !!
+// i.e. capitals, "," etc.
+
+## PERFORMANCE##
+
+Key considerations:
+1. Count number of operations (not time)
+2. Focus on how performance scales.
+3. Go beyond input size.
+
+ASYMPTOTIC ANALYSIS
+// IGNORE initialization time
+// IGNORE Implementation of specific operations
+
+1,000,000 = O(1)
+"Drop Constants" - Initialization Cost - doesn't change with input size
+3n + 3 = O(3n)
+"Keep only dominant term" 
+
+SORTING ALGORTIHMS
+http://www.java2novice.com/java-sorting-algorithms/ 
+https://www.cs.cmu.edu/~adamchik/15-121/lectures/Sorting%20Algorithms/sorting.html
+
+BIG O ANALYSIS
+http://web.mit.edu/16.070/www/lecture/big_o.pdf 
+
+nanoTime() 
+// function in Class System
+// returns the current value of the running Java VM 
+// high resolution time source in nanoseconds
+
+e.g.
+long startTime = System.nanoTime();
+someFunctionToTest(vars);
+long endTime = System.nanoTime();
+double estTime = (endTime-startTime / 1000000000.0;
+
+REASONS FOR DATA OUTLIERS 
+// real data - just didn't perform as 'expected' for a few examples.
+// this is real time data. If the system has scheduled other events - this
+// may create aborations in the data.
+// be prepared for real system data to be noisy!!!
+
+GENERICS
+
+<E> - Type parameter. parameteries type.
+//Allows data structure to be generic (e.g. E could be used for Integer, String)
+// Cannot use primitives (i.e. int, double, float).
+// Instead use <Integer> for java's "auto-boxing" of integers. 
+// i.e. expressing these integers as an object.
+
+// Do not need to put generic type parameter in constructor.
+// e.g. public ListNode(E the Data)
+// No <E> for ListNode<E>
+
+LINKED LIST
+http://www.mycstutorials.com/articles/data_structures/linkedlists 
+// Sentinel node - empty end nodes.
+
+TEST FRAMEWORK  - JUnit
+http://www.tutorialspoint.com/junit/junit_test_framework.htm 
+
+EXCEPTIONS
+https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html 
+// 3 categories
+
+1. checked Exceptions -
+// exceptional conditions that a well written program should anticipate and recover from.
+// e.g. FileNotFound exception.
+// Subect to "Catch or Specify" requirement
+// All exceptions, except those under the following two categories.
+
+2. Errors - unchecked exceptions
+// Exceptional conditions, external to the application that application usually
+// cannot anticipate or recover from.
+// e.g. hardware or system malfunction 
+// Not subject to "Catch or Specify" requirement
+
+3. Runtime Exceptions - unchecked exception
+// Internal to application, application usually cannot anticipate or recover from.
+// Usually a flaw in the logic.
+// program will terminate - hence system should not "catch" these errors.
+// these errors are better programmed out rather than dealt with.
+// not subject to "Catch or Specify" requirement
+
+TREES
+
+TRAVERSALS
+
+depth first traversals. 
+// broad type
+// burrows to a "dead end" first
+
+breadth first traversals. 
+// broad type
+// checks first layer of children nodes first.
+
+// ALL RELY ON RECURSION:
+// Calling same method from within itself.
+
+preorder traversal
+1. Visit yourself FIRST
+2. Visit all of your left subtree
+3. Visit all of your right subtree
+// visit left subtree first (where available)
+// then visit right subtree (where available)
+
+post order traversal
+1. Visit all of your left subtree
+2. Visit all of your right subtree
+3. Visit yourself LAST
+
+in order traversal
+1. Visit all of your left subtree
+2. Visit yourself
+3. Visit all of your right subtree
+
+level order traversal (breadth-first traversal)
+//smashes all levels in a row, burrowing deeper
+1. maintain a running list: this adds all current children.
+2. algorithm explores next up on the list.
+3. When it explores "next up" on list, it adds their children to END of list.
+// functions like a "queue" - 
+
+#### HASH TABLES ####
+input % hashSize = key
+
+
++++
+// O(1) average performance of look-up! Incredibly Fast
+
+---
+// Resizing costs - timely opportunity that can occur at an inopportune time
+// No data ordering
+
+Colllision Management
+// linear probing - probes next available free slot
+// random probing - time intensive, probes random free spot.
+// performance severely drops off when hash 70% full - best time to resize.
+// chaining - create a list at each key!
+
+HASH SET VS HASH MAP
+
+SET 
+// tells you whether or not an item is in the set or not 
+// e.g. words in a dictionary
+// add()
+// contains()
+
+MAP
+// Key - Value pairs ALWAYS
+// e.g. texts (data) under person's name
+// get()
+// put()

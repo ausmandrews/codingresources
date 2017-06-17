@@ -1,0 +1,144 @@
+SASS - Syntacly awesome style sheets.
+
+** hyphen and underscore are interchangeable in SASS use
+
+SASS can't be directly interpreted by the browser. This must be converted into CSS, this is called "compiling" 
+
+COMPILING:
+
+sass main.scss main.css
+
+- in command prompt. Takes the argument main.scss and outputs to location main.css
+
+!!Once this is done, it will auto-compile everytime I click run in my code!! Set and forget, just be aware that it's happening.
+
+---
+
+nesting
+
+.banner {
+  ...
+  .nested {...}
+}
+
+=
+
+.banner {}
+.banner .nested {}
+
+Easier for keeping track of nested properties. Also less redundancy.
+
+Also nest common properties for example:
+
+font : {
+  size: 20px;
+  family: Roboto;
+}
+
+border : {
+  top: 4px black;
+}
+
+Also use variables ($) to assign properties at the start, for reuse (e.g. numbers, strings, booleans, or nul, lists, maps value!)
+
+$transluscent-white;
+
+LIST example: Helvetica, Roboto, arial; (with/without commmas - used for defining 
+MAPS example: Paired values (key1: value1, key2: value2);
+
+PSEUDO-ELEMENTS -can be nested
+
+.notecard{ 
+  &:hover{
+      @include transform (rotatey(-180deg));  
+    }
+  }
+
+MIXIN!
+
+A group of readily appliable CSS properties!
+
+
+@mixin mixin-name($mixin-argument) { list of CSS properties assigned ...
+
+  backface-visibility: $mixin-argument;
+  -webkit-backface-visibility: hidden;
+}
+
+@include mixin-name - way of asigning
+
+STRING INTERPOLATIONS - add truncated inputs
+
+@mixin ($photofile) {
+	background-image: url(#{photofile}.jpg)
+}
+
+@include mixin(photoname)
+
+PARALLAX SCROLLING! Neat trick for nice website design.
+
+EACH LOOPS - loops on every item in a list!
+
+@each $item in $list {
+  //some rules and or conditions
+}
+
+FOR LOOPS
+
+@for $i from $begin through $end {
+   //some rules and or conditions
+}
+
+IF STATEMENTS
+
+ifs come with two options...
+
+BINARY OUTCOMPE ONLY IF
+width: if( $condition, $value-if-true, $value-if-false);
+
+MULTI IF STATMENT
+@mixin deck($suit) {
+ @if($suit == hearts || $suit == spades){
+   color: blue;
+ }
+ @else-if($suit == clovers || $suit == diamonds){
+   color: red;
+ }
+ @else{
+   //some rule
+ }
+}
+
+FILE MANAGEMENT:
+
+All SCSS sheets >>> main.scss >>> <compiled> >>> main.css
+
+Import these files with the following syntax:
+
+@import url(https://fonts.googleapis.com/css?family=Pacifico); //CSS import
+@import "helper/placeholders";
+@import "helper/mixins";
+
+Use this to import other .scss and .css files. Also used for http:// pages to inport other styling rules.
+
+"Partials" in SASS - files you split up for organised functionality. Naming convention:
+_filename.scss : tells SASS to hold off compiling them individually.
+**to import, omit _ and .scss e.g. @import "filename"
+
+EXTENDING:
+
+@extend will be a stable way of extending the properties of one class, onto the other:
+
+.lemonade {
+  border: 1px yellow;
+  background-color: #fdd;
+}
+.strawberry {
+  @extend .lemonade;
+  border-color: pink;
+}
+
+classes that exist solely for the purpose of extending to other classes. use: "a%example"
+Good way of consolodating rules that never get used on their own.
+
+** @extend is MORE EFFICIENT and LESS REPETITIVE than @include when the mixin doesn't take

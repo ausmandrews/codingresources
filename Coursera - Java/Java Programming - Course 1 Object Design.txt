@@ -1,0 +1,311 @@
+Save in simpleLocation.java 
+// file name has to be the same as class name.
+// everything has to be class in Java.
+
+public Class SimpleLocation {
+
+// Member variables - declared outside of any methods, inside declaration of class.
+// data the objects need to store.
+// also called member variables
+public double latitude;
+public double longitude;
+
+
+// methods: things that this class can do.
+// OVERLOADING
+// methods can also be overloaded.
+// java does NOT ALLOW you to have a different return type without changing the input arguments.
+
+// default constructor
+// called OVERLOADING when multpile constructors are provided for a given class, with different number of variable inputs.
+public SimpleLocation () {
+// takes no arguments.
+	this.latitude = 32.9;
+	this.longitude - 100.4;
+}
+
+
+// constructor method: special method called when objects are created.
+// no return type // always called name of the class
+public SimpleLocation (double lat, double long) {
+
+}
+
+this
+// refers to the calling object. Refers to specific instance of class (i.e. object)
+
+PRIVATE VARIABLES & METHODS
+// can only be accessed and change within the class they are initiated.
+// always make them private as a matter of good practice.
+// no issue accessing private variables from within same class. This is fairly commonly done when testing a class.
+// getters and setters to prevent user abuse.
+// helper methods can often be private.
+
+GETTERS
+
+public double getLatitude() {
+	return this.latitude;
+}
+
+//allows access to private variables value through getter, where a direct all in a separate class would not work.
+
+SETTERS
+
+public void setLatitude(double lat) {
+	this.latitude = lat;
+}
+
+// we can put conditions on acceptance within a setter
+// this prevents user abuse.
+
+DRAW AND UPDATE MEMORY MODELS
+// only two types of data in java 
+// primitives: 8 types - boolean, int, double, bite, short, long, char
+// all others are object type
+// note object data stores a reference! essentially an address to the data in the "heap" - the memory.
+
+SCOPING
+
+VARIABLE TYPES
+// local variables: Used only within method it is declared.
+// parameters: behave just like local variables.
+// member variables: belong to a class. Declared outside all methods in class. Scope is entire class - 
+// can be referred to from any method within class.
+
+// NOTE: Scope disappears as soon as method (e.g. constructor) disappears.
+// NOTE: ""this" can be avoided in JAVA. this.longitude = longitude in a constructor class (i.e. secific method).
+// Java will look for local variable "longitude". When this is not found, 
+// it will look in calling object for particular method
+
+//array objects are always in the heap! It is not a primitive type. It is an object type.
+
+ARRAYLISTS
+// Note: variable != object it points to!
+// In this instance, List is an  "Abstract Data Type"
+// "Abstract Data Type" are Java "interfaces". Specifies BEHAVIOURS not IMPLEMENTATION. 
+
+List<Feature> variableName = new ArrayList<Feature>;
+
+variableName[0] = f;
+variableName.set(0,f);
+// sets the 0th place with the string "f"
+
+variableName.length 
+// for Arrays only NOT ArrayList
+
+variableName.size();
+// length for ArrayList
+
+variableName.add(E e)
+// adds specified element at end. Also an option to place in the middle.
+
+NOTE: ArrayLists can expand to fit in more parameters! Arrays cannot.
+
+GENERICS 
+
+e.g.
+List<Feature> countries = new ArrayList<Feature>();
+List<Marker> countryMarkers = new ArrayList<Marker>();
+
+//Both sides "containers" must match.
+
+## INHERITANCE ##
+
+derived / subclass "extends" base / uper class
+
+WHY?
+
+1. keep common behaviour in one class
+2. Split different behaviour into separate classes.
+3. Keep all of the objects in a single data structure.
+
+WHAT IS INHERITED?
+
+-Public instance variables
+-Public methods
+-Private instance variables
+// NOTE: Private instance variables can only be accessed by getters and setters 
+// i.e. public methods
+
+3. Student (reference) <===(is-a)=== Student (object)
+3. Person  (reference) <===(is-a)=== Person (object)
+3. Person  (reference) <===(is-a)=== Student (object)
+3. Student (reference) <!==(is-not-a) Person (object)
+
+// this allows us to keep multiple different subclasses in a base class.
+Person[0] = new Student();
+Person[1] = new Faculty();
+Person[2] = new Person();
+
+// A person is not necessarily a student! Not all people have GPAs and student IDs!
+
+VISIBILITY MODIFIERS
+
+
+1. Public - access from ANY other class. /
+ // all public interface methods need to be, well, public
+..
+2. Protected - access from same class / same package / any subclass 
+// generally a bad idea having unrelated class in same package with unrestrained
+// access. Don't use!
+..
+3. Package (default) - access from same class / same package / NO subclasses
+// not recommended either for the same reason (access from unrelated class)
+..
+4. Private - access from ONLY the class. 
+ // all instance variables should be made private.
+
+OBJECT CONSTRUCTION JAVA
+// should be called "initialisers"
+// initialise "inside-out" - see logic description below.
+
+"new" operator that allocates space.
+
+e.g.
+Student student = new Student();
+// first line of student goes up to Person class
+// first line of Person class goes up to Object class
+// Object class instance variables are initialised. Returns to lower level
+// Person class variables are initialised. Returns to lower level
+/ Student class variables are initialised.
+
+COMPILER VIRTUAL RULES
+// WATCH OUT FOR CRYPTIC COMPILER ERRORS, SUCH AS CALLING SUPER() WITN NO ARGS
+
+#1 Extends any class without superclass to "object" class:
+
+public class Person extends Object {...}
+
+#2 If there's no constructor in a given class, it will insert a blank one
+
+public Person() {...}
+
+#3 VERY First line of constructor must be "this(args)" (not this.method()) constructor within the same class
+// or "super(args)" *args optional.
+// if not there, java will insert a call super(); default call to the super class
+// constructor!
+
+VARIABLE INITIALISATION
+
+this(args) calls the constructor of itself with args!!
+
+OVERLOADING
+// SAME class, has same method name with DIFFERENT parameters
+OVERRIDING
+// SUBCLASS has same method name with the SAME parameters as the superclass.
+// ALWAYS calls the method() based on the object's dynamic type
+// -i.e. the method that lives in the given class.
+
+POLYMORPHISM
+// calls method in a given class by OVERRIDING, even when same method belongs to multiple different classes.
+
+"Think like a compiler, act like a runtime environment"
+
+#Compiler Time Rules#
+
+1. Compiler ONLY knows reference type
+// i.e. if it's referred to as Person but points to Student, 
+// cannot apply Student public methods.
+
+2. Can only look in reference type class for method
+
+3. Outputs a method signature.
+e.g. code: "s.toString" => "String toString();"
+
+#Run Time Rules#
+
+1. Follow exact RUNTIME TYPE of object to find method.
+// i.e. runtime as confirmed that object is ACTUALLY a Student type.
+
+2. Must match compile time method signature to appropriate method in actual
+object's class.
+// will match "String toString()" in Student class.
+
+CASTING
+
+"Widening"
+int      => double
+subclass => superclass
+//Automatic type promotion. Can always go from subclass to superclass.
+
+explicit "narrowing"
+ double => int
+ superclass => subclass
+// CAREFUL: asking the compiler to believe you.
+// loss of information with narrowing.
+
+((Student)s).getSID();
+
+instanceof
+//runtime check of whether or not there is-a relationship.
+
+if (s instanceof Student )
+{
+   // onle executes if s is-a Student at runtime	
+   ((Student)s).getSID();
+}
+
+SYNTAX
+
+method2() = this.method2()
+// when calling method not applied to any class, Java assumes called on "this" class.
+
+// "this" bound to runtime object type.
+// super() bount to compile time.
+
+ABSTRACT CLASSES
+// Abstract classes CANNOT BE INSTANTIATED!!
+// All abstract METHODS must be implemented by a non-abstract class that extends an abstract class. 
+
+
+public abstract class Person {}
+
+// inherits both:
+// IMPLEMENTATION 
+// instance variables and methods which define common behaviour AND 
+// INTERFACE
+// method signatures which define required behaviours
+
+public abstract void monthlyStatement() {
+	// i.e. concrete subclasses must override this method
+}
+
+INTERFACE
+
+public class Person implements Comparable<Person>
+// where Comparable is the interface.
+
+// if you want method signatures ONLY (not implementaiton).
+1. Force subclasses to have this method.
+2. Stop having actual Superclass objects
+3. BUT Keep having Superclass References.
+
+
+// can inherit from MULTIPLE interfaces
+
+
+##EVENT DRIVEN CODE##
+
+// Series of different mouse click options with unfoldingMaps:
+
+public void mousePressed() {...}
+public void mouseClicked() {...}
+public void mouseReleased() {...}
+
+mouseX
+mouseY
+//inherited from PApplet.
+
+## USEFUL FUNCTIONS BUILT_IN ##
+.equals();
+// compares exact same string of characters!
+// UNLIKE ==, does not compare to check if they are the EXACT same objects.
+// As a rule, always use the .equals when comparing objects.
+
+## SEARCHING AND BLOCK SORTING ##
+
+OVERRIDE RULES
+
+1. The argument list should be exactly the same as that of the overridden method.
+2. The return type should be the same or a subtype of the return type declared 
+in the original overridden method in the superclass

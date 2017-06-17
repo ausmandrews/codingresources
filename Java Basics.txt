@@ -1,0 +1,221 @@
+TYPES OF DATA
+
+## all files names for class ClassName go into ClassName.java . This is how Java works.
+
+int - integer
+boolean - true or false
+char - character, represents a single character. Must be enclosed in SINGLE quotes 'F'.
+
+ARITHMETIC
+
++, -, *, /, %
+
+RELATIONAL OPERATORS
+
+<, <=, >, >=, ==, !=,
+
+BOOLEANS
+
+The precedence of each Boolean operator is as follows:
+
+! is evaluated first
+&& is evaluated second
+|| is evaluated third
+
+VARIABLES
+
+int myLuckyVar = 7;
+
+// all variables must have a specific data type.
+
+COMMENTS
+
+// single line
+
+/*
+Multi-
+line
+*/
+
+PRINT TO CONSOLE
+
+System.out.println("name");
+
+// prints out "name".
+
+FUNCTION DECLARING
+
+public class Magic {
+	public static void main(String[] args) {
+		// some code.
+	}
+}
+
+IF STATEMENT
+
+if (some < thing) {
+	// code.
+} else {
+	// code.
+}
+
+// ternary statement equivalent.
+
+int pointsScored = 21;
+
+char gameResult = (pointsScored > 20) ? 'W' : 'L';
+System.out.println(gameResult);
+
+//equivalent to:
+
+int expression = (evaluate > boolean) ? 1 /*value if true*/ : 0 /*value if false*/;
+
+SWITCH STATEMENT
+
+int input = 1;
+
+switch(input) {
+	case 1: /*Do something*/
+	break;
+	case 2: /*Do something else*/
+	break;
+
+	default: /*watcha gonna do */
+
+}
+
+JAVA CLASSES
+
+public class Category {	
+  
+  //instance variables
+  int modelYear;  
+
+  //The class constructor for the Category class
+  public Category(int param1) {
+	modelYear = param1;
+  }
+
+  //custom method
+  public void randomCallOut() {
+	System.out.println("Stuff");
+  }
+
+  //return custom method
+  public int faveNo() {
+  	return 42;
+  }
+
+  //Java's built in necessary 'main' method
+  public static void main(String[] args){
+      
+      //initiate AN instance of the Category variable
+      Category myNewCategory = new Category(2007);
+
+      //call a custom method
+      myNewCategory.randomCallOut();
+
+    }
+}
+
+// A class is a set of instructions that describe how a data structure should behave.
+
+JAVA METHODS
+// A method is a pre-defined set of instructions. 
+// Methods are declared within a class. 
+// Note: Java provides some pre-defined methods available to all classes, but we can create our own as well.
+
+void
+// specifies method should not return a value after it is executed.
+// alternative options such as int, char.
+
+CLASS CONSTRUCTORS
+1. A class constructor will allow us to create Category instances. 
+2. With a class constructor, we can set some information about the Category.
+If we do not create a class constructor, Java provides one that does not allow you to set initial information.
+
+INHERITANCE
+class Category extends UmbrellaCategory {
+   // Category specific methods
+}
+
+// allows category to inherit 
+
+JAVA'S BUILT IN MAIN METHOD
+
+public static void main(String[] args) {}
+//Note: Note that this is defined inside the class's main method!!
+
+USEFUL DEFINITIONS
+
+// Class: a blueprint for how a data structure should function
+// Constructor: instructs the class to set up the initial state of an object
+// Object: instance of a class that stores the state of a class
+// Method: set of instructions that can be called on an object
+// Parameter: values that can be specified when creating an object or calling a method
+// Return value: specifies the data type that a method will return after it runs
+// Inheritance: allows one class to use functionality defined in another class
+
+## DATA STRUCTURES ## 
+
+ARRAYS:
+
+//import java data structure
+import java.util.ArrayList;
+
+// new array
+ArrayList<Integer> example = new ArrayList<Integer>();
+
+// fill array
+example.add(12);
+example.add(13);
+
+// retrieve value
+example.get(index);
+
+// insert new element at the 0th position, move the rest right.
+example.get(0,new_value);
+CONTROL STATEMENTS
+// run a task repeatedly. 
+
+HASHES:
+// contains a set of key value pairings.
+
+
+// import necessary HashMap class
+import java.util.HashMap;
+
+//create new hash
+HashMap<String, Integer> myFriends = new HashMap<String, Integer>();
+
+// Add key value pairings.
+myFriends.put("Mark", 24);
+myFriends.put("Cassandra", 25);
+
+// Specify key to retrieve value
+System.out.println( myFriends.get("Mark") );
+
+// size() works on hashes as well (# of keys)
+System.out.println( myFriends.size() );
+
+// loop through hash by assigning "name" to the .keySet()
+// .keyset() returns a keyset of a given hash.
+// .get(name) used to access value associated with "name"
+
+for (String name: myFriends.keySet()) {
+    System.out.println(name + " is age: " + myFriends.get(name));
+}
+
+
+FOR LOOP:
+
+for (int initial = 0; initial < 10 ; initial++) {}
+
+FOR EACH LOOP:
+// shortcut for loop, due to common action.
+// : read as "in"
+// note that element_value is the value, not the position in the array.
+
+for (Integer element_value : exampleArray){
+    System.out.println(element_value);
+}

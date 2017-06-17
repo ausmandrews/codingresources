@@ -1,0 +1,160 @@
+COURSE 4 - MASTERING SOFTWARE INTERVIEW
+
+## GOOD RESOURCES ##
+
+Effective Java, by Joshua Bloch
+- intermediate level book
+- more efficient and effective coding practices
+
+INTERVIEW QUESTIONS
+
+Cracking the Coding Interview
+https://www.amazon.com/Cracking-Coding-Interview-6th-Programming/dp/0984782850/
+
+Tonnes of java problems to practice
+http://codingbat.com/ 
+
+TEXTBOOK
+
+Introduction to Algorithms,
+by Carmen, Leiserson, Revest, and Stein (CLRS)
+- Strong technical studies; 
+- commonly used by all students preparing for the technical interview.
+
+http://opendatastructures.org/
+
+SOFTWARE IN PERSON INTERVIEWS
+
+45 Min
+1. Programming (whiteboard)
+2. Data Structures / Bi-O analysis
+3. Building Complex Algorithms
+4. Other CS Topics (Bitwise manipulation, Logic Problems, System design, testing)
+-and anything on resume -
+
+COMMON PITFALLS ON TECHNICAL INTERVIEWS
+// look for these when interviewing.
+
+1. Unconfirmed assumptions
+// ask those clarifying examples!
+// give examples in comments, to demonstrate understanding of question. 
+// i.e. specific examples (i.e. ARGMENTS --> OUTPUT) are great to frame the question.
+
+2. Lack of communication.
+// talk all the way through - strategy, idea, not just what you are coding exactly.
+
+3. Missed errors and failure
+// acknowledge the mistake.
+// trace through base code.
+// very carefully work through actual examples. Focus on what you wrote.
+// use comments above to trace algorithm
+// listen for hints
+  
+4. Lack of follow-through and analysis
+// failure to test code. recognise the value of testing it.
+// you have licence to test: this will look good.
+
+// TECHNICAL PITCH OF PREVIOUS WORK
+
+Broadly technical / non-technical 
+
+// ALGORITHMIC PROBLEM SOLVING
+
+1. Ask lots of questions.
+// Tease out scope.
+// Define all assumptions
+
+2. Build a solution.
+// Start with a naive or Brute-force soluition!! 
+// Ensures there is a correct solution to the problem.
+// Test!!
+// - with normal inputs
+// - with edge cases
+// - data structures
+// - performance
+// - trade-offs
+
+3. Iterate design & analysis
+
+4. // return to Test!!
+
+5.  Write code onto white-board
+
+// WHITEBOARD PROBLEM SOLVING
+
+Know well as a minimum the following:
+
+Data Structures and Abstract Data Types
+
+Arrays
+-Linked Lists: single and double, with and without sentinel nodes
+-The List ADT
+-Trees: Binary and otherwise, BSTs
+-The Set ADT
+-Tries
+-Heaps
+-Stack, Queue and Priority Queue ADTs
+-Graphs: directed and undirected, different representations and their trade-offs
+-Hashtables: collision resolution strategies, hash functions and their trade-offs
+-The Map ADT
+-Algorithms
+
+Binary search
+-Sorting algorithms: Selection Sort, Insertion Sort, Bubble Sort, Quicksort, Mergesort, Heapsort
+-Search algorithms: Depth-first search, Breadth-first search, Dijkstra's algorithm
+-Tree traversal: pre-order, post-order, in-order, level-order (which is BFS)
+-Algorithm techniques: Brute force, Divide and conquer (e.g. Mergesort), Greedy, Dynamic Programming (more advanced, OK not to know if you are at an intermediate level)
+-NP-hard problems
+-Basic Java Programming Constructs
+
+All the very basics of course (loops, conditionals, functions, etc)
+-Input and output: from files and command line
+-The String and Character class
+-Converting between data types
+-Object oriented design and concepts: Inheritance and Polymorphism, Classes and Objects, static and non static, access level modifiers (public, private, protected)
+-The java.util library (including all of the container classes)
+-The Iterator pattern (more advanced, probably OK not to know if you are at an intermediate level)
+-Exception generation and handling
+-Event-driven programming
+-Inner classes and anonymous classes (slightly more advanced, but good to know about)
+-Lambda expressions (more advanced)
+-Classes of problems to study
+
+Several kinds of questions are standard in an interview setting. Make sure you seek practice with each of these different kinds of problems.
+
+Object oriented design, using given data structures.
+-Bitwise manipulation of integer representations.
+-Game theory puzzles: "muddy children", volcano eruptions.
+-Estimating bounds: "how many chickens are there in Chicago?"
+
+EVALUATION CRITERIA:
+
+1. COMMUNICATION
+-Listening carefully?
+-Comprehending questions?
+-Asking correct questions?
+-Any unchecked assumptions?
+-Hearing and Heading hints?
+
+2. TECHNICAL SKILLS
+-Finding mulptiple solutions before choosing the best one?
+-Seeking new ideas and methods?
+-Inventive and flexible?
+-Open to new ideas?
+--Iterate: design, evaluation, implementaion, testing
+
+EVALUATION CRITERIA AS AN INTERVIEWER:
+
+-How did the candidate analyze the problem?
+-Did the candidate miss any special or edge cases?
+-Did the candidate approach the problem methodically and logically?
+-Did the candidate ask clarifying questions when they were stuck?
+-Does the candidate have a strong foundation in basic computer science concepts?
+-Did the candidate produce working code? Did the candidate test the code?
+-Is the candidate’s code clean and easy to read and maintain?
+-Can the candidate explain their ideas clearly?
+-Is the candidate pleasant to work with?
+
+COMPILED LIST OF INTERVIEW QUESTIONS
+
+https://www.reddit.com/r/cscareerquestions/comments/20ahfq/heres_a_pretty_big_list_of_programming_interview/

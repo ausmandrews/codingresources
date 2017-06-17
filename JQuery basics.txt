@@ -1,0 +1,247 @@
+JQUERY - JAVASCRIPT IN WEBSITES
+
+// javascript library used to help add quick functionality to websites.
+//sits on top of javascript.
+
+JQUERY LIBRARY REFERENCES
+
+***
+    <script src="https://s3.amazonaws.com/codecademy-content/projects/jquery.min.js"></script>
+
+//minimised jquery library
+
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+
+//user interface specific library (autocomplete, date etc)
+
+    <script type="text/javascript" src="app.js">
+
+//custom page specific interactions.
+***
+
+DOM - Document Object Model,
+// Heirarchical tree model used
+
+LINKING TO JAVASCRIPT:
+
+<script type="text/javascript" src="script.js"></script> //NOTE: NOT SELF CLOSING!
+// Use to link to a given javascript page.
+
+SYNTAX CONVENTION
+
+HTML <==> CSS <=> Javascript
+
+<div> / div / $("div")
+class="button" / .button / $(".button")
+id="green" / #green / $("#green")
+
+event handlers: .click(), .mouseenter()
+
+JQUERY SYNTAX
+
+$(document).ready(function() {
+    jQuery magic;
+});
+
+// $() - Jquery things are about to happen. - actually a Jquery object
+// $() - A function: turns whatever is in the brackets into a Jquery object. 
+// document - apply this to the HTML document
+// .ready - function- will do stuff as soon as #HTML Document# is ready
+// .ready(function()) - function() will be done, when HTML document is loaded.
+// function() is equivalent to "action"...
+// this will unleash the function code: function() { }.
+
+var $p = $('p');
+
+// $p is JUST naming convention - $ exists only for readability
+// $ on variable indicates that it is a holder of a Jquery object.
+
+$('p, li').fadeTo('slow', 0);
+
+// compound selectors work as well.
+//anything in CSS can be replicated in script.js
+
+$( "div.demo-container" )
+
+//this is an example of an element with a class already applied.
+
+FUNCTIONS
+
+http://api.jquery.com/ - // find all functions at this definitive library!
+
+$(###).mouseenter(function(){ ### }) //commences action when mouse enters.
+
+$(###).fadeTo("speed", opacity) //fades to given opacity (0-1) at given speed ("slow", "fast")
+
+$(###).hide()
+
+$(###).hover()
+
+$(###).dblclick()
+
+$(###).mouseleave(function(){ ###}); //commences action when mouse leaves.
+
+$(###).fadeIn("slow")
+
+$(###).click(function() { ### } )
+//note that click event handlers DO NOT work for dynamic html elements added AFTER.
+//Instead we need to use the .on() method for these. 
+
+$(document).on("click", "glyphonic_selector", function() {}
+//by applying event handler to (document), this makes it active to new created elements.
+//applying to ".selector" would not capture future elements.
+$(###).on("click", function () {###} )
+//works for all CURRENT and FUTURE elements.
+
+$(this). //use to affect function on element currently under consideration by "event handlers"
+
+.slideToggle("speed")
+
+$(".info").append("<p>Stuff!</p>"); //inserts the specified element as the last child of the .info class.
+$(".info").prepend("<p>Stuff!</p>"); //inserts the specified element as the first child of the .info class.
+
+$('<p>Stuff!</p>').appendTo('.info'); //reverse logic of append
+$('<p>Stuff!</p>').prependTo('.info'); //reverse logic of prepend
+
+$('target').after('<tag>To add</tag>'); //adds a tag after a given target element.
+$('target').before('<tag>To add</tag>'); //adds a tag before a given target element.
+
+.empty() // empties contents from element, including all children.
+.remove() // empties and deletes the actual element.
+
+$('selector').addClass('className');  //add a class name to a given element
+$('selector').removeClass('className'); //remove a class name from a given element
+.toggleClass()
+// REMEMBER: # or . are not required - as we are modifying an element, not selecting anything.
+
+$("div").height("100px"); //resize height
+$("div").width("50px"); //resize width
+ $("div").css("background-color","#008800"); // generic use re-style. restyle
+
+$('div').html("I love jQuery!"); //content edit - will SET FIRST div with html content between.
+$('div').html(); // will GET FIRST div html content between <div>this stuff</div>
+
+$('input:checkbox:checked').val(); // gets value of form (e.g. first check-box)
+e.g.
+//Get the value from an input
+var input = $('input[name=checkListItem]').val();
+
+$(document).on('event', 'selector', function() {
+    Do something!
+}); 
+// another event handler, works better with the this and remove() function (?).
+// research deeper to learn more.
+
+HOVER EFFECT - CHANGING STYLES! // remove styling after passover. 
+
+$('div').hover(
+    function(){
+      $(this).addClass('highlight');
+   },
+   function(){
+      $(this).removeClass('highlight');
+   }
+);
+
+$(###).focus() 
+// event handler: an element has focus when we click or tab over to it.
+// only works for select HTML elements, (e.g. text areas)
+
+$(###).animate({left:'+=10px'},500);
+// first argument indicates what should be done to the element.
+// 2nd argument is the time required to do this movement.
+
+$(###).keydown();
+//event is triggered whenever a key on the keyboard is pressed.
+//works on whatever page element has focus. Ensure to have mouse over element when pressing down.
+
+jQUERY UI 
+
+//UI - user interface
+// jQuery UI extension library. FOR animations.
+// don't forget to call the library, not jsut the stype sheet (TBC):
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script> //SHOULD BE THE LIBRARY
+
+
+.effect('explode')
+.effect('bounce',{times:3}, 200);
+.effect('slide')
+
+$("#menu").accordion({collapsible: true, active: false});
+// collapsible menus.
+
+$("div").resizable()
+//resize any element with a mouse.
+
+$("item").draggable
+//drag anywhere across the page!
+
+$("list_item").selectable()
+//makes a list easily interactive, selecable.
+
+$("list_item").sortable()
+//allows the list to be sorted using drag and drop.
+
+$('form').submit(function() { ### ; return false; }
+//To trigger activities that happen when a form gets submitted. Very handy. eg error messages/posts.
+
+$("element.class").text() 
+// concatinates all text appearing in the document that matches the object
+// added in logical sequencing.
+// CANNOT BE USED in place of .val() for retrieving text from <input>s or <textarea>
+
+GLYPHICON ITEMS
+//probably bootstrap made interactive by jQuery
+// Suite of +,-, stars, x's etc.
+class=glyphicon-remove, glyphicon-star 
+
+<span class="glyphicon glyphicon-plus"></span>
+// +/- collapisble menus.
+//toggleClass to glychicon-minus as desired.
+
+.attr()
+// retrieves class from selector.
+
+AUTOCOMPLETE:
+JSCRIPT:
+ var list = [ "item1", "item2", "item3", "item4", "item5"];
+  $( "#input-id-tag" ).autocomplete({ source: list });
+HTML:
+  <form class="form-horizontal" role="form">
+      <input type="text" class="form-control ui-autocomplete-input" id="search" placeholder="Find your city" autocomplete="off">
+  </form>
+
+
+CONSIDER IMPROVED FUNCTIONALITY:
+// accordians - collapsible menus
+// sliders - sliding scale
+// datepicker - embedded calender option.
+
+ANNYANG VOICE RECOGNITION LIBRARY
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+//small javascrip library that has voice recognition commands.
+
+//example code for voice commands. See https://www.talater.com/annyang/ 
+
+<script>
+if (annyang) {
+  // Let's define our first command. First the text we expect, and then the function it should call
+  var commands = {
+    'show tps report': function() {
+      $('#tpsreport').animate({bottom: '-100px'});
+    }
+  };
+
+  // Add our commands to annyang
+  annyang.addCommands(commands);
+
+  // Start listening. You can call this here, or attach this call to an event, button, etc.
+  annyang.start();
+}
+</script>
+
+CONSIDER FOR A SLIDER BANNER
+
+## use this link for implementing unslider. Ultra-simple j-Query App.
+http://idiot.github.io/unslider/

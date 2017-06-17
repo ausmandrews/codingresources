@@ -1,0 +1,93 @@
+###GRAPHS ABSTRACT DATA TYPES###
+
+
+Google Maps API Developer Key:
+
+Coursera Project
+AIzaSyB2AviuJDAavKgrzBdkLMLjOx3JteGvwaw
+First Attempt
+AIzaSyBp2YjzAonm7GhLHBvg21FrB9sQPxhXzYE
+
+
+Basic objects: vertices, nodes - V
+
+Relationships between: edges, arcs, links - E
+// Edges can have weights
+
+
+// size dependent on |V| and |E|
+
+//Directed OR
+//Undirected 
+
+Paths
+// sequence of vertices and edges from one vertices to the next
+
+###GRAPH IMPLEMENTATIONS###
+
+1. Adjacency Matrix
+//algebraic representation of graph structure.
+
+
++++
+// fast to test for edges.
+// fast to add/remove edges.
+// better for algabraic implications.
+
+---
+// huge amount of space - most vertices don't have edges to every other!
+// slow to add/remove vertices (resizing actions required)
+
+2. Adjacency lists
+
+private Map<Integer, ArrayList<Integer>> adjListMap;
+
+// list of vertices to which each vertex is adjacent
+
++++
+// Easy to add vertices
+// Easy to add/remove edges.
+// May (not def) use a lot less memory than adjacency matrices
+
+//*Sparse graph: O(1) edges for each vertex.
+
+NEIGHBOURS
+
+In degree
+// number of incoming edges
+
+out degree
+// number of outgoing edges
+
+GRAPH CLASS DESIGN
+// 1. What do I want to do with the graph?
+// 2. What is the ratio of edges to nodes? (i.e. Adj list or matrix)?
+// 3. How do I need to access to nodes/edges?
+// 4. What properties (if any) do nodes and edges need to store?
+
+// Make common operations fast! Choose the best data structures for this.
+
+Rules of good design.
+- Objects that make sense, whose data and methods go together
+- Interfaces are clean; private data (or data structures) are not exposed.
+- It's easy and fast to do the operations you want to do.
+- Methods are short and easy to read and understand.
+
+REFACTOR CODE FOR:
+1. EXTENSIBILITY
+2. TESTIBILITY
+3. MAINTAINABILITY 
+
+## TRAVELLING SALEMAN PROBLEM ##
+
+Complexity Theory
+NP - Non-deterministic polynomial. Levels:
+
+1. NP-hard
+2. NP-complete
+3. NP
+
+Graph Types
+
+Hamiltonian - visits each vertex exactly once. Consider for non-complete graphs.
+Eulerien - visit each EDGE exactly once.

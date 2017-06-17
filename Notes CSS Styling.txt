@@ -1,0 +1,127 @@
+BOOTSTRAP PROVIDES READY MADE CSS
+
+bootstrap form details:
+http://getbootstrap.com/css/#forms 
+
+
+ - http://getbootstrap.com/css/ for data
+ - http://getbootstrap.com/css/#grid-options for the column thingy...
+
+class="img-responsive" - sorts your photos right out! gives them 100% width of the columns that they are stacking in.
+
+...This doesn't always work, consider this attributes for the class:
+
+background: url(#) no-repeat center center fixed;
+background-size: cover;
+
+nav nav-tabs = navigation tabs!!
+nav nav-pills = navigation pills!!
+
+class="nav nav-pills" - creates pill like buttons for an unordered list:
+(consider "... nav-stacked" for vertical stacking.
+
+class:pull-left / pull-right are equivalent to {float:left !important }
+
+ul (role="presentation") ...and class="active" 
+
+comments:
+
+/*Add your CSS here!*/
+
+selectors:
+
+div > li : will only select list items that are DIRECT children of div.
+
+** CSS STYLING ***
+
+font-weight: 100; 200... no px measurement.
+text-transofrm: uppercase;
+text-align: left/right
+div styling:
+
+To make menus apear as lists:
+
+.class ul {
+list-style: none;
+}
+
+.class ul {
+display: inline-block;
+}
+
+.class h2:first child - first child is an attribute like hover! This is surprisingly handy for positioning the first element on the screen.
+
+To better space within a div and moving it downwards, use the two TOGETHER:
+
+position: relative;
+top: XX px; 
+
+background: url(XXX);
+background-colour: #XXX;
+
+Selectors:
+
+a:hover {
+a:link {
+a:visited {
+
+can also be used with classes eg .class:selector {}
+
+border-radius: 5px; - curvey sexy borders.
+.class attribute {
+	display: inline	
+}
+
+button play:
+
+.class:hover {
+cursor: pointer;
+font-weight: bold;
+transition: color .25s; - transitions the color in this time! cool!
+
+text-align: center; - for centralising text within a div.
+
+attributes:
+
+color: #333;
+font-weight: 44;
+text-transform: uppercase;
+
+- note that this will apply to all nested classes! e.g. .class ul {} will have the same output as .class li when applied individually.
+
+background-image: url();
+
+*** CSS POSITIONING ***
+
+<div> elements take up foll width of page by default.
+
+margin: XXpx; - outside of border...
+padding: XXpx; - inside of border...
+
+margin: 20px 0 0 30px; - margin: {Top Bottom Left Right}
+
+display: inline; - puts all elements on the same line.
+display: inline-block; - floats all elements on the same line, against each other.
+
+display: none; - hides all elements!
+display: block; - show all elements, force them to show!
+
+float: left / right / both; - stacks to the side given.
+
+position: absolute; - positions relative to first parent element that does not have position:static.
+margin-left: XX px;
+
+position: relative; - moves position relative to where element WOULD have been.
+position: fixed; - stays relative to browser.
+
+clear: both; - forces onto a new line.
+
+z-index:1 ; measure of importance. Places the element at the top, before all others. Possibly use other numbers to order other elements more elequently.
+
+*137#
+
+** CSS VIDEO **
+
+<video autoplay muted loop>
+        <source src="XXX" type="video/mp4">
+      </video>

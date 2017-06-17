@@ -1,0 +1,266 @@
+ANGULAR JS 1.X
+
+//PAGE DOES NOT RELOAD WHEN VIEW PASSING TO CONTROLLER AND CONTROLLER UPDATING VIEW.
+
+//Angular JS is a Javascript web framework.
+
+1. CREATE NEW MODULE
+
+var app = angular.module("myApp", []);
+
+//a MODULE contains the different components of an AngularJS app.
+
+
+2. ADD APPLICATION'S DIRECTIVE: DEFINE SCOPE IN VIEW.
+
+**NG-DIRECTIVES ARE BUILT IN DIRECTIVES
+
+//AngularJS wanders through html, looking for directives.
+//when found, angularJS triggers behaviour (attached scope / looping through array)
+
+<body ng-app="myApp">
+
+//directive tells AngularJS that the "myApp" module will live within the <body> element.
+//this is termed the application's "scope".
+//i.e. ng-app directive used to define "scope" of the application.
+
+<div ng-repeat="element in array_name">
+
+//ng-repeat directive repeats all html insid parent div for each element in array_name.
+
+
+
+<img ng-src="{{ item.picture }}">
+
+//img directive
+
+ng-click="functionName($index)"
+
+//click based directive that carries out functionName on a given $index (index taken from element that was clicked).
+// "$index" passes in the index of the array that was clicked.
+
+3. CREATE NEW CONTROLLER.
+
+app.controller("MainController", ["$scope",function($scope) {
+  $scope.title = "Top Sellers in Books";
+}]);
+
+//controller manages the app's data. 
+//in this example: Property ".title" is used to store a string and attach it to the $scope.
+
+4. ADD CONTROLLER'S DIRECTIVE: DEFINE CONTROLLER SCOPE IN VIEW
+
+<div class="main" ng-controller="MainController">
+
+//defines the controller's scope.
+//properties attached to $scope in MainController will become available to use within defined elmenent:
+// <div class="main"/>
+//use $scope in controller to communicate data value's to the html viewer.
+
+5. ADD SCOPE TO THE CONTROLLER ($scope)
+
+//input variables data here.
+
+SYNTAX - EXPRESSIONS
+
+{{ title }} - used in html to access $scope.title's value (from MainController).
+//An expression displays values on the page
+
+FILTERS
+
+https://docs.angularjs.org/api/ng/filter 
+{{ specific_ob.property | filter }}
+
+//applies filter to specific)ob.property.
+// | pipe filter takes specific_ob.property (left) and "pipes" it into filter on (right)
+
+DIRECTIVES 
+
+//used to teach browser new HTML elements e.g.
+// 1. READIBILITY - Easy to read parent html.
+// 2. REUSEABILITY - Self contained units of functionality.
+
+DIRECTIVE FOLDER (js/directives)
+
+e.g. appinfo.js
+
+app.directive("appInfo", function() {
+  return {
+    restrict: "E",
+    scope: {
+      example: "="
+    },
+  	templateUrl: "js/directives/appInfo.html" 
+    link:XXX
+  };
+});
+
+// creates new html element <app-info example="object_name">
+// restrict: "E" - directive will be used as new HTML element
+// scope specifies that we will pass information INTO directive.
+// "=" tells the directive to look into an attribute named example in <app-info> element.
+// data in "example" becomes available to use in the template given by templateUrl.
+// templateUrl specifies HTML to use in order to display the data in scope.example
+
+// "link" used to create interactive directives that respond to user action.
+
+e.g. appinfo.html ( <app-info></app-info> new directive in html element form )
+
+TEMPLATE 				   ==> PRODUCED HTML
+<app-info example="object_name">
+<h2 class="title">{{ example.title }}</h2> ==> h2 class="title">{{ object_name.title }}
+</app-info>
+
+// template extract shows how to embed html by pulling form the scope.example information.
+// will be reproduced when custom html element <app-info> is called upon.
+// replaces example with the object name example = "object_name".
+
+PAGE HTML (index.html()
+
+<app-info example="object_name"></app-info>
+
+// incorporates directive as html in parent page.
+// passes in ATTRIBUTE example called "attribute_name"
+// value of "object_name" to be pulled out from $scope in CONTROLLER.
+// e.g. 
+
+<script src="js/directives/directiveName.js"></script>
+
+// Don't forget to include script name into source html to ensure directive is picked up.
+
+LINK DIRECTIVES
+
+link: function(scope, element, attr) { ... }
+
+// "link" used to create interactive directives that respond to user action.
+// "scope" refers to directive's scope. 
+// Any new properties attached to $scope will become available to use in directive's template.
+
+// "element" refers to directive's html element
+// "attr" contains the element's attributes.
+
+CREATING A SERVICE
+//read large data direct from a server.
+
+//hardcoding data into a controller has limitations.
+//create a service for large data - i.e. weather, financial etc.
+
+1. MAKE A NEW SERVICE.
+
+app.factory("serviceName", [$http, function($http) { //.. } ]);
+
+//app.factory creates a new service. Save in js/service/
+
+2. USE ANGULARJS TO FETCH DATA (JSON) FROM SERVER
+
+[$http, function($http) { //.. } ]
+
+// built in $http allows to fetch JSON from server.
+// $http needs to be added to "newService" as DEPENDENCY.
+// As DEPENDENCY, $http is available to use INSIDE "newSERVICE"
+
+3. CONSTRUCT GET REQUEST INSIDE NEWSERVICE
+
+{ return $http.get('https//:webaddress) }
+
+e.g.
+app.factory('forecast', ['$http', function($http) { 
+  return $http.get('https://webaddress.json') 
+            .success(function(data) { 
+              return data; 
+            }) 
+            .error(function(err) { 
+              return err; 
+            }); 
+}]);
+
+
+// "serviceName" uses built-in $http to construct a HTTP GET request to access JSON data
+// "serviceName" to return this data.
+
+4. CONTROLLER USE NEW SERVICE TO FETCH DATA AND STORE IT.
+
+app.controller('MainController', ['$scope', "serviceName", function($scope, servicename) {
+   serviceName.success(function(data) {
+     $scope.fiveDay = data;
+   });
+
+
+// 1. add "serviceName" as a dependency so it is available for use.
+//
+
+ROUTES
+
+// 1. script to be included to allow routing to work:
+
+<script src="https://code.angularjs.org/1.2.28/angular-route.min.js"></script>
+
+// You need to include this additional JavaScript file in order to add routing to your 
+// app because it does not come with the AngularJS library by default.
+// NOTE: **Goes in head.**
+
+
+// 2. configure different routes (**in app.js**)
+
+var app = angular.module('GalleryApp', ['ngRoute']);
+app.config(function ($routeProvider) { 
+  $routeProvider 
+    .when('/', { 
+      controller: 'HomeController', 
+      templateUrl: 'views/home.html' 
+    }) 
+    .when('/example/:id', { 
+      controller: 'ExampleController', 
+      templateUrl: 'views/example.html' 
+    }) 
+    .otherwise({ 
+      redirectTo: '/' 
+    }); 
+});
+
+// $routeProvider used to define the application's routes.
+// .when() used to map controller "HomeController" to template "home.html"
+// .otherwise used to redirect mistyped urls to a given page.
+
+// 3. Add route template html calling element into main view **in index.html**
+
+<div ng-view></div>
+
+// this will inject the templateUrl from the routes provided. i.e. "views/home.html" in this place.
+
+
+$routeParams.id
+
+app.controller('ExampleController', ['$scope', 'serviceName', '$routeParams', function($scope, serviceName, $routeParams) {
+  serviceName.success(function(data) {
+    $scope.service_entry = data[$routeParams.id];
+  });
+}]);
+
+// Use to access specific object in a given array.
+
+<a href="#/books">
+// # can be used to access root directory in place of base URL (TBC) 
+
+3RD PARTY DIRECTIVES
+
+e.g. Embedded Map <leaflet> Tag (http://tombatossals.github.io/angular-leaflet-directive/#!/)
+
+// developed by others for use in the general community.
+// NOTE: ensure all relevant library scripts are included 
+
+JAVASCRIPT FOR INCLUSION
+
+<script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+<script src="/js/angular-leaflet-directive.min.js"></script>
+
+//the AngularJS library,
+//the Leaflet library (javascript & CSS),
+//and the angular-leaflet-directive.js script.
+
+CSS FOR INCLUSION
+
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css">
+
+ 

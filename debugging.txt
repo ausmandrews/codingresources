@@ -1,0 +1,3 @@
+DEBUGGING
+
+- inspect element, toggle device viewer.

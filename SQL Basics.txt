@@ -1,0 +1,268 @@
+SQL - STRUCTURED QUERY LANGUAGE
+
+RELATIONAL DATABASE MANAGEMENT SYSTEMS (RDBMS)
+- program that lets you create, update and administer a relational database.
+- Open Source RDBMS: SQLite (mobile) / MySQL (web aps, largest) / SQLPostgre
+- Closed Source: Oracle DB (banking) / SQL Server (Microsoft)
+
+## library of useful commands ##
+https://www.codecademy.com/articles/sql-commands?r=master
+
+SYNTAX:
+
+IS / IS NOT NULL
+// instead of = != for NULL statements
+
+CREATE TABLE table_name (
+    column_1 data_type, 
+    column_2 data_type, 
+    column_3 data_type
+  );
+
+select /**/
+from orders
+order by 1
+limit 100;
+/* Order by 1 implies "order by column number 1"*/
+
+CREATE TABLE
+// Clauses: always CAPS. Perform specific tasks. Also referred to as commands.
+
+table_name
+// Refers to the name of the table that command applies to.
+
+(column_1 data_type, ..)
+// Parameter. List of columns, data types, values that are passed to a clause as an argument.
+
+Data tyles:
+INTEGER / TEXT / REAL / DATE
+
+NULL - special value when data missing or unknown.
+
+## CLAUSES ##
+
+CREATE TABLE table_name (
+	column_1 data_type,
+	column_2 data_type
+	);
+// creates table
+
+INSERT INTO table_name (column_1, column_2, column_3) VALUES (value_1, 'value_2', value_3);
+// inserts new row to table.
+
+SELECT column_name FROM table_name;
+// Will fetch data from database. EVERY query will begin with SELECT.
+
+SELECT * From name
+// * wildcard used to grab everything.
+
+UPDATE table_name
+SET some_column = some_value
+WHERE some_column = some_value;
+//Update table
+
+ALTER TABLE table_name ADD column datatype;
+
+## FILTER CLAUSES ##
+
+SELECT DISTINCT genre FROM table;
+//Only selects distinct values from a table. No repeats. 
+
+SELECT * FROM table WHERE logical_column > statement;
+// "WHERE" used to place filters.
+
+WHERE name LIKE Se_en (e.g. "%bride%" )
+// Filters for names with "Se"*** **"en"
+// "_" for individual character wildcards
+// "%" for strings of character wildcards (including zero length strings)
+// NOTE: not CASE sensitive
+
+WHERE numberfield BETWEEN 10 AND 12;
+WHERE textfield BETWEEN "A" AND "J";
+//All of A up until but NOT INCLUDING J.
+//Inclusive of 10 and 12
+
+AND / OR
+// use these to combine multiple conditions in filter, without colons;
+
+ORDER BY column_name DESC (ASC);
+//orders by column_name
+
+LMIT 10;
+// limits the list size to integer length 10. Cuts off after that.
+
+## AGGREGATE FUNCTIONS ##
+//Mass operations
+
+SELECT COUNT(*) FROM table;
+// Counts rows in table WTIHOUT a NULL value.
+// Pass in column_name or * (for ALL columns)
+// Note COUNT(*) is a column query returned, just like column_name!
+
+SELECT column_name, COUNT(*) FROM table
+GROUP BY column_name;
+// produces count X column_name
+//NOTE: only use GROUP BY with aggregate functions
+
+SELECT SUM(column_name) FROM table
+// sums the values in column_name
+
+MAX(column_name)
+MIN(column_name)
+AVG(column_name)
+ROUND(column_name)
+
+## MULTIPLE TABLES ##
+
+INTEGER PRIMARY KEY
+// Primary key serves as a unique identifier for each row or record in a given table.
+// Must be unique. Cannot be NULL.
+
+FOREIGN KEY
+// Foreign Key is a column that contains the primary key of another table in the database.
+// Do not need to be UNIQUE and can be NULL.
+
+CROSS JOIN Combine:
+
+SELECT table1.column1, table1.column2, table2.column1 FROM table1, table2;
+// Combines every row in table1 with every row in table2
+// CRUDELY COMBINES THE TWO - DOES NOT CONSIDER foreign keys.
+
+INNER JOIN combine:
+
+SELECT * FROM table_1
+JOIN table_2 ON table_1.table_2_id = table_2.id;
+
+or 
+
+JOINT table_2 USING (same_column_name)
+// 1. Takes first table to display
+// 2. Joins on the 2nd table
+// 3. Applies query that must evaluate to true to stitch on value
+// Note: joins whole table.
+
+OUTER JOIN combine:
+
+SELECT *FROM
+  table_left
+LEFT JOIN table_right ON
+  table_left.table_right_id = table_right.id;
+// As for Inner join but DO NOT require join condition to be met.
+// EVERY row in the LEFT table is returned:
+// If join condition is not met, these columns are just populated with NULL values.
+
+albums.name AS 'Album'
+//provides name overlay for readability, provides an "Alias".
+
+---
+## BUSINESS METRICS ##
+
+select date(ordered_at)
+from table;
+/* Where date in TIMESTAMP form: 2015-01-05 14:43:31 */
+/* OR date only form 2015-01-15 (?) */
+
+CTEs - COMMON TABLE EXPRESSIONS
+// mmore organised way of expressing sub-queries.
+
+  with {subquery_name} as (
+    {subquery_body}
+  )
+  select ...
+  from {subquery_name}
+  where ...
+
+SELF JOIN
+
+## TABLE TRANSFORMATION ##
+
+USE OF SUBQUERIES
+
+SELECT * 
+FROM flights 
+WHERE origin in (
+    SELECT code 
+    FROM airports 
+    WHERE elevation > 2000);
+
+non-correlated subquery: 
+// sub-query that can be run independently of the outer query.
+
+correlated subquery:
+// sub-query cannot be run independently of the outer query.
+// 1. A row is processed in the outer query.
+// 2. Then, for that particular row in the outer query, the subquery is executed.
+
+#JOIN
+// merges the rows from two tables
+
+#UNION
+// merges the columns from two tables
+
+SELECT column_name(s) FROM table1
+UNION
+SELECT column_name(s) FROM table2;
+
+#UNION ALL
+// Allows duplicate values.
+
+#INTERSECT
+// returns only rows from the first SELECT statement that are duplicates in the second SELECT statement.
+
+SELECT column_name(s) FROM table1
+
+INTERSECT
+
+SELECT column_name(s) FROM table2;
+
+#EXCEPT
+// returns only rows that ARE NOT part of the first SELECT statement.
+
+SELECT category FROM new_products
+
+EXCEPT
+
+SELECT category FROM legacy_products;
+
+Conditional Aggregates 
+//aggregate functions that compute a result set based on a given set of conditions.
+
+#SQL IF STATEMENT 
+// create new column based on existing values.
+
+SELECT
+  CASE
+	WHEN ... THEN ... "category A"
+	WHEN ... THEN ... "category B"
+	ESE "Value if not NULL"
+  END AS new_column_name
+FROM ...
+
+#Conditional aggegate operations
+COUNT(CASE WHEN some condition THEN 1 ELSE NULL END)
+
+## DATE, NUMBER AND STRING FUNCTIONS ##
+// Very database dependent
+
+1. Date: YYYY-MM-DD
+2. Datetime or Timestamp: YYYY-MM-DD hh:mm:ss
+
+DATETIME(column)
+// returns the date and time of the column
+
+DATE(column)
+TIME(column)
+
+DATETIME(time1, '+3 hours', '40 minutes', '2 days');
+// manually increment DATETIME
+
+SELECT (number1 + number2)
+SELECT CAST(number1 AS REAL) / number3;
+SELECT ROUND(number, precision);
+
+# String manipulation
+
+SELECT string1 || ' ' || string2;
+//concatenates two strings
+
+REPLACE(string,from_string,to_string)

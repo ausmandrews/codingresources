@@ -1,0 +1,462 @@
+RUBY FUNDAMENTALS
+
+Declaring variables does not require a special command.
+e.g. my_var = 12;
+*Same to change.
+
+PRINT
+
+puts "phrase" (with empty line added after)
+print "phrase"
+
+METHODS
+
+built in methods accessed via .notation :
+ .length
+ .reversed (reverses string)
+ .upcase
+ .downcase
+
+COMMENT 
+
+#comment will be hidden for a line
+=begin
+Comment in between, on separate lines
+=end
+
+VARIABLE
+
+convention: lower_case
+
+gets.chomp
+- gets takes in the user input.
+- chomp chops off the extra enter placed after input on the console!
+
+
+"I use string #{variable} interpolate"
+- adds the variable value in place of the #{-}
+
+var2 = var1.capitalize
+- will capitalise the first letter of each string, and .downcase the rest.
+
+var1.capitalize!
+- var1 will be saved over with the method applied thanks to the "!"
+
+IF STATEMENTS
+
+if logic statement
+  #do this
+elsif logic statement
+  #do this
+else 
+  #this
+end
+
+expression if boolean  #condensed if statements
+expression unless boolean #condensed unless statement
+
+TERNARY CONDITIONAL EXPRESSION
+
+(puts - optional) boolean ? Do this if true: Do this if false
+
+unless condition
+  #evaluates to false
+else
+  #something special, because it evaluates to true.
+end
+
+OPERATORS
+==, !=, <=, >=,
+BOOLEANS
+&&, ||, !=
+
+.include? "substring" - evaluates to true if the "substring" is included in the variable value. Don't forget ??.
+.gsub - Global SUBstitution
+stringtochange.gsub!(/remove/, "replace")
+
+while condition
+	#code
+end
+
+until condition
+	#code
+end
+	#code what happens when condition is FINALLY met! **like an anti-loop
+
+ASSIGNMENT OPERATORS
+=, +=, -=, *=, /=, <=>
+combined comparison operand, output: 0 (if equal), -1 <, +1 >.
+
+FOR LOOPS
+
+for variable in a...b [excludes the b - exits the loop]
+for variable in a..b [INCLUDES the b - exits the loop only after]
+
+LOOPS
+
+loop { # All coding on repeat } ....equivalent to:
+loop do
+	# all required coding
+	break if # breaks loop if condn met
+	next if  # skips to next iteration of the loop if condn met
+end
+
+**requires nested loops for array looping
+** requires two placeholder variables for Hashes
+
+ARRAY NOTATION
+
+array = [a, b, c]
+
+object.each { |item| # Do something }
+object.each do |item| # Do something end
+
+X.times { # repeat code X times } - super compact for loop
+...applies expression to each operator.
+
+.split("delimiter")
+
+breaks string into individual words and saves in an array!
+delimiter can be "," or " "
+
+.each
+
+can be used to access each element of an array.
+below shows a way of accessing each eleemnt in the array.
+
+letters = ['a', 'b', 'c', 'd']
+letters.each do |letter|    -- placeholder name doesn't matter - just put between ||
+  print letter
+end
+
+HASHES => like javascript objects
+
+hash = {
+  key1 => value1,
+  key2 => value2,
+  key3 => value3
+}
+
+**This is hash literal notation
+
+my_hash = Hash.new("default value")
+my_hash = {}
+
+**empty new hashes
+
+ADDING TO HASHES
+
+hash_example["new key"] = "value-pair"   OR
+hash_example {
+  key4 => value4}
+
+ACCESSING HASHES
+
+hash_example["key 4"]
+hash_2d[2][3]
+
+LOOPING OVER PAIRINGS:
+
+friends.each { |x| puts "#{x}" }
+family.each { |x, y| puts "#{x}: #{y}" }
+
+.reverse! 
+
+reverses array.
+
+variable = variable.sort_by do |a,b|
+	b
+end
+
+# sorts by b! not by a
+
+.to_s 
+
+converts number to a string - used prior to printing / concatenation!
+
+DEFINING METHODS
+
+def method_name(argument, *splat_arguments)
+	# code some shiz
+	return value_of_function #hands back a value of the function
+end
+
+BLOCKS - NAMELESS METHODS
+
+1.block do
+  # code block here
+end
+
+1.block { #code block here }
+end
+
+.methods can be handed {BLOCKS}
+
+e.g. array.each { |i| puts i }
+-a very specific method getting opassed a block of text!
+
+.sort
+
+sorts array by value / alphabetical
+
+NIL AND FALSAE
+
+both non-true operators. Different in meaning / value.
+nil is "nothing at all"
+false is "not true"
+
+SYMBOLS!!!!!!
+
+a_symbol = :syntax
+
+-"string" == :string # FALSE - Symbols aren't strings.
+-can be used as hash keys instead of strings.
+-OR referencing method names.
+
+
+1. They're immutable, meaning they can't be changed once they're created;
+2. Only one copy of any symbol exists at a given time, so they save memory;
+3. Symbol-as-keys are faster than strings-as-keys because of the above two reasons
+
+STRINGS <=> SYMBOLS
+
+.to_s - to a String
+.to_sym - to a SYMbol (.intern also works)
+.to_i - to an integer
+
+.object_id
+
+gets the unique object id of an object.
+
+HASH SYNTAX
+
+old_hash = { :one => 1,
+   :two => 2,
+}
+
+new_hash = { one: 1,
+  two: 2,
+  three: 3
+} **since Ruby version 1.9
+
+FILTERING HASH
+
+hash.select {|a, b| some_cond <= logic + statement}
+
+hash.delete(key) - deletes the key of a given hash.
+
+.each_value  -- iterates over value ONLY
+.each_key    -- iterates over key ONLY
+
+CASE LOOPS
+
+case input
+when a
+  # code
+when b
+  # code
+when ...
+
+else
+  # code
+end
+
+# condesnsed...
+
+case language
+  when "JS" then puts "Websites!"
+  when "Python" then puts "Science!"
+  when "Ruby" then puts "Web apps!"
+  else puts "I don't know!"
+end
+
+CONDITIONAL ASSIGNMENT
+
+variable ||= assigned_value
+the variable will only assign the value  
+
+RETURN STATEMENTS NOT REQUIRED
+
+def add(a,b)
+  return a + b    
+end
+
+===
+
+def add(a,b)
+  a + b
+end
+
+[lower_bound].upto(higher_bound) {}
+[higher_bound].downto(lower_bound) {}
+
+input.respond_to?(:method)
+
+Returns true or false depending on wether a given input can respond_to a method. 
+
+.next (returns next integer up)
+
+CONCATENATION OPERATOR
+
+ existing << input
+
+# string combine "a" << " b"  = "a b"
+# array addition [1] << 4 = [1 4]
+#shorthand for .push
+
+"refactoring" #change appearance of code without changing functionality.
+
+BROCS, PROCS AND LAMBAS
+
+do end OR {} #block syntax
+
+#Some methods take blocks in as arguments. e.g.
+
+my_nums = [1, 2, 3]
+my_nums.collect { |num| num ** 2 }
+# ==> [1, 4, 9]
+
+yield(params)
+
+# term allows a method to yield to the block for a period of time.
+# a block must also be supplied when a yield is required.
+# then calling the method will REQUIRE a block.
+
+example.method (param)
+	yield (param)
+end
+
+example.method (input) {|param| code }
+
+PROCS - "saved blocks"
+
+proc_syntax = Proc.new { |x| x ** 3 }
+
+var.method(&proc_syntax) # to call
+
+.floor - rounds number down
+.select - provides a filter
+
+#blocks - one thing in ruby that ISN'T an object.
+
+a_lambda = lambda { |param| block }
+# pretty much behave as per procs, different syntax...
+# There are only 2 MAIN DIFFERENCE:
+1.
+# Lambdas check the number of arguments passed to it, a proc does not.
+# lambdas throw an ERROR, when they see something they don't like
+# procs will assign nil to empty variables, ignore extras.
+2.
+# When lambda returns, it passes control back to the calling method
+# When proc returns, returns immediately without going back to calling method.
+
+CLASSES
+
+class NewClass
+  def initialize (inputs)
+     # Boot-up required for any given class
+  end
+  # Class magic here
+end
+
+example = Class.new("specific", "inputs")
+
+@ is used for "instance variables" - variables who appear in an instance in the class!
+@inst_variable - i.e. variable is attached to a specific instance of a class.
+
+1. GLOBAL VARIABLES - $global_var
+2. LOCAL VARIABLES
+3. CLASS VARIABLES -  @@class_var
+4. INSTANCE VARIABLES - @insta_var
+
+# good practice to limit a variable's scope. Limit the scope via using local variables as much as possible.
+# this is better for traceabiltiy, not overwriting important values.
+
+INHERITANCE
+
+**Ruby only allows direct inheritance. No multiple fathers!!!**
+
+class new_class < old_class
+end
+
+# methods within a class can be easily overwritten. As if writing again for new
+
+SUPER 
+# can be used to access method from a parent/super class
+# when you def a given method, the super will search for this method in the parent class.
+
+class DerivedClass < Base
+  def some_method
+    super(optional args)
+      # Some stuff
+    end
+  end
+end
+
+CLASS METHOD SYNTAX
+
+class Class_name
+  def Class_name.method_name
+  # class method programming
+  end
+end
+
+PUBLIC VS PRIVATE
+
+# methods are public by default in Ruby
+# otherwise put {public} or {private} on single line before the method
+
+AVOID WRITING METHODS TO ACCESS INCIDENT VARIABLES
+
+class Person
+  attr_reader :name
+  attr_writer :name
+  def initialize(name)
+    @name = name
+  end
+end
+
+==== equivalent to...
+
+def name
+  @name
+end
+
+def name=(value)
+  @name = value
+end
+
+attr_accessor - makes a variable readable AND writeable in same instance
+
+MODULES
+
+module ModuleName
+  # Bits 'n pieces
+  # Constants in Caps
+end
+
+# toolbox that contains set of constants and methods, for specific purposes
+# as for classes EXCEPT (No parents, cannot create instances)
+
+namespacing - separating methods and constants into named spaces
+
+:: # scope resolution operator
+
+Syntax:
+
+ModuleName::CONSTANT # ruby looks in the ModuleName to fetch out the given CONSTANT
+
+require "module"
+# imports a given module into use, if not part of already available ones.
+
+include Module
+# imports full module into a method.
+# all methods now available for use 
+# No longer required to ModuleName::CONSTANT, just CONSTANT when using
+
+mixin 
+# when a MODULE is used to mix additional behaviour into a CLASS
+# can be used to mimic MULTIPLE inheritence
+
+extend
+# extend MODULE into full CLASS use, not just instances of a class.
