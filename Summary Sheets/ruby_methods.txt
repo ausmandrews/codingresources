@@ -1,0 +1,157 @@
+### RUBY METHODS AND MODULES ###
+
+
+### RUBY METHODS ###
+
+# NOTE parenthesis are optional for ruby methods!!
+
+p string/hash/object
+# prints to console
+
+.new
+# runs initialize method
+
+.local_variables
+# use to see which variables are in current scope.
+# great for debugging.
+
+.collect - applies block to passed in array
+.map =- same as above
+
+.floor - rounds number down
+
+.select - provides a filter
+
+proc_name.call - calls procs directly!
+
+test = Proc.new { # does something }
+test.call
+# does that something!
+
+.is_a? Integer / String / Symbol
+
+.times
+
+10.times { |index| put index if index > 0 }
+# operates as very efficient for loop
+# index is a hidden argument, commencint at 0
+
+.chomp
+# chops off at newline character \n
+
+.split
+# array of words in line
+
+File.foreach 'file_name.txt' do |line|
+# code to manipulate here
+end
+
+# reads in each file line by line, |line| is an implicity argument
+
+.methods
+# lists all methods for given object (symbol naming convention)
+
+.methods.grep /contains/
+# lists method name with the text "contains" in it
+
+STRING METHODS
+
+.lstrip.capitalize
+# strips space from left, returning # " tim"=> "Tim"
+
+.lines do |line|
+  ...
+end
+# converts %Q quote into lines
+
+.sub
+# use to substitute within string.
+
+%w{str1, str2}
+# parses strings out into an array
+
+ARRAY METHODS
+
+.join
+#joins arrays as a string
+
+.push or <<
+# append to an array
+
+.pop or .shift
+# remove from an array
+
+[]=
+# set element
+
+.sample
+# returns x number of elements "a sample"
+
+.sort
+# sort an array
+
+
+.reverse
+# reverses an array
+
+stack = []
+stack << "one" 
+stack.push ("two")
+stack.pop "two"
+
+queue = []
+queue.push "one"
+queue.push "two"
+queue.shift # => one
+
+X.times { # repeat code X times } - super compact for loop
+...applies expression to each operator.
+
+
+.each
+
+# can be used to access each element of an array.
+# basically an interator
+# below shows a way of accessing each eleemnt in the array.
+
+.select
+# selects elements based on block condition
+# modifies self array
+
+.reject
+# rejects based on block
+# modifies self array
+
+.map
+# modify each element in the array as per block.
+
+RANGES METHODS
+
+.to_a
+# converts sequence to an array
+
+a ... z === b
+# boolean includes element on the right?
+
+.max
+# returns max in range
+
+.include?
+# returns boolean if included
+
+HASH METHODS
+
+.each_pair
+# used to iterate through, instead of .each for an array
+
+OBJECT METHODS
+
+.instance_Variables
+# returns all instance variables names
+
+MISCELLANEOUS
+
+render html: "string to be rendered"
+# renders string as html. Used in rails applications (controller) (?)
+
+Time.now

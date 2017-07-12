@@ -1,0 +1,36 @@
+bloc.io - $12k for 6-8 months. Menthors, 95% new on top of ... .
+free - codeschool.
+
+2000 book Extreme Programming Explained. 
+
+codewars - logic puzzles that aid with structuring.
+
+RoRO - second wed of every month.
+Join Ruby Australia on slack.
+https://ruby-au-join.herokuapp.com
+
+Ruby down under forum.
+
+GIT
+
+Pro-Git (Scott Chacon) - free online https://git-scm.com/book/en/v2
+
+RUBY
+
+- Elequent Ruby - Russ Olsen
+- Programming Ruby - Dave Thomas, Andy Hunt (Famous "Pickaxe" book)
+
+RUBY ON RAILS - PAID BOOKS
+
+- Agile Web Development with Rails (Dave Thomas, Sam Ruby et al)
+- Ruby on Rails Tutorial (Michael Hartl) - STarting
+- Rails 4 in Action (Ryan Bigg)
+
+INTERMEDIATE RAILS -
+
+See chapter 1.1.1 of Ruby on Rails Tutorial 5 for further recommendations.
+
+https://www.programmableweb.com/api-university/what-are-apis-and-how-do-they-work
+
+- learn more about integration with RESTful big name APIs such as google maps, facebook etc.
+- don't know what I don't know 

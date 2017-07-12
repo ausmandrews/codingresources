@@ -1,0 +1,136 @@
+DEPLOYING A WEBSITE
+
+1. Generate Site
+2. Deploy to the internet
+3. Give website a custom domain name
+
+1. SITE GENERATION
+
+JEKYLL - the static site generator.
+https://jekyllrb.com/docs/home/ 
+** Use this guide to determine what needs downloading.
+
+COMMAND PROMPT:
+
+gem install jekyll
+// installs jekyll rubygem for use
+
+jekyll new my-portfolio-site
+// creates directory my-portfolio-site and fill it with Jekyll's site content.
+
+jekyll serve
+// view site locally. Starts server locally that will server the files to own computer.
+// default address of jekyll's local server is: http://localhost:4000
+
+JEKYLL's STANDARD DIRECTORY STRUCTURE AND CONTENT
+// Speeds up development
+
+_config.yml -
+// configuration file that contains many values to be edited only once. 
+// YAML - Data serialization language - human and computer readable.
+
+_includes/ -
+// contains all the partials (code templates that repeat) that your site uses to load common components.
+// e.g. header, footer.
+
+_posts/ - 
+// where blog posts are stored. Standard styling when naming convention respected.
+
+_layouts/ -
+// directory contains templates that are used to style certain types of posts.
+
+2. DEPLOY TO INTERNET 
+
+your-user-name.github.io
+// Repo naming convention on github to ensure webpage on "Github Pages" is actually published.
+
+git remote add origin https://github.com/your-user-name/your-user-name.github.io.git
+// tells git what repo will store site's content.
+// adds the remote and label's it as "origin"
+// REMOTE: URL for repo that will store site's contents.
+// "origin" becomes alias for repo name - use as replacement for referencing.
+
+git remote rm origin
+// remove the remote as origin. Especially if you've made any errors in assigning the remote.
+
+git remote -v
+// lists all the Git remotes and corresponding URLs.
+// good for checking.
+
+git remote show origin
+// full info on remote (this case remote called "origin") 
+
+git push -u origin master
+// pushes contents of sight up to repo called "origin"
+
+** Automatically publishes to https://ausmandrews.github.io (This is a 'Github Pages' requirement) **
+
+3. GIVE WEBSITE CUSTOM DOMAIN NAME
+
+1. INFORM GitHub of new domain name to be used (purchased one)
+2. Set up DNS records in Route 53 that direct TO GitHub
+
+
+1. purchase custom domain name through AWS or any other site.
+2. Create CNAME (Custom domain name) file in gitHub repository. No file extension name.
+3. Add CNAME to first line of new file and save file ( yourcustomdomain.com ). 
+
+--- RUBY ON RAILS COURSERA ---
+
+DEPLOYING TO HEROKU
+
+// PaaS - Platform as a Service
+// deploy applications on their platform.
+
+HEROKU COMMAND LINE INTERFACE - CLI
+// Formerly "Heroku Toolbelt"
+// tool for creating and managing apps from the command line
+
+1. Download toolkit as per instructions on Heroku CLI
+// allows to manage heroku applications from the command line.
+
+2. Manage gems.
+// heroku uses postres as database (recommends 12factor gem)
+// sqlite gem into development group and "heroku" gems in production
+
+A. gem 'sqlite3', group: :development #so heroku doesn't complain about it!
+B. group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+C. run bundle install to suck changes into application
+D. commit changes to repository.
+
+3. Heroku interface
+
+heroku login
+// enter credentials
+
+heroku create application-subdomain-name 
+#if subdomain already taken let auto generate by leaving off naming convention.
+# create subdomain for application at heroku.
+
+git remote -v # v for verbose
+// git command to find out which repos are remote?
+// shows new created heroku app
+
+heroku version
+// tells which version (if any) is installed
+
+heroku keys:add
+// Add SSH public key to heroku (Used for bit bucket SSH authentication)
+
+heroku rename heroku-domain-change-name
+// only if domain name not taken, can renaime it
+
+git push heroku master
+// pushes my master branch to heroku's master branch (after the heroku create command to create heroku command)
+// should automatically detect ruby application
+// NOTE: make sure that top level directory of your git repo contains app directory!
+
+heroku open
+// opens heroku application in browser
+// alternative to typing in url.
+
+
+

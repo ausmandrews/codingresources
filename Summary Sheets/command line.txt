@@ -1,0 +1,169 @@
+COMMAND LINE NOTES - (Linux based user systems ONLY: Linux and Mac OS X - not command Prompt)
+
+command prompt is called a 'terminal'
+an 'argument' is a term / directory etc handed into a command
+
+$ - this is the 'shell prompt'
+ls - lists all files and directories in CURRENT directory.
+pwd - print working directory.
+cd [directoryname] - change directory, directoy name
+cd .. - changes directory, moving up one level
+cd ../[directorypath] - moves up one level then hops into [directorpath] (locally written)
+mkdir [directoryname] - make directory called [directoryname]
+touch [newfilename] - adds a new file called [newfilename].extension to the current directory.
+cp [file1] [file2] - copies contents of file1 into file2
+cp [file1] [file2] ... [directory] - creates brand new copies of source files into directory
+cp * [directory] - copies all files in current directory
+cp [W]*[ext (.txt)] [directory] - copies all files starting with [W] and ending with given extention [ext] into directory.
+
+ALL 'mv' COMMANDS HOLD FOR 'cp'. USE AS DIRECTED ABOVE, EXCEPT:
+
+mv [file1] [newfile] - renames file1 [newfile] in same directory.
+rm [file1] - PERMANENTLY deletes file
+rm -r [directory] - PERMANENTLY deletes directory, -r is "recursive", meaning to delete all children directories and files as well!
+rm -rf [director] - as above but with force
+
+
+**these commands can be combined in compound ways**
+
+ls -a - list with all hidden files (files that begine with '.')
+
+OPTIONS - can be applied to any command...
+
+-a - (lists all contents) including hidden files and directories.
+-l - (lists all contents) of a directory in long format
+e.g. drwxr-xr-x 5  cc  eng  4096 Jun 24 16:51  action
+     access rights / number hard links / user / user group / size / date modified / name
+-t - order files and directories by the time they were last modified.
+
+combine like : -alt
+
+I/O INPUT OUTPUT REDIRECTION
+
+stdin - standard input - information input into terminal through keyboard or input device.
+stdout - standard output - information output after a process is run
+stderr - standard error - standard error message output by failed process.
+
+...redirection will reroute stdin, stdout or stderr to or from different locations..!
+
+echo "Hello" - stdout "Hello" in the terminal.
+echo "test" > test.txt - redirects "test" into file test.txt
+cat [filename] - prints all contents of [filename]
+cat [file1] > [file2] - OVERWRITES file2 with all the content of file1
+cat [file1] >> [file2] - ADDS all the content of file1 to end of file2
+command < [file3] - File3 becomes standard input for a given command!
+wc - outputs lines / words / characters
+sort - arranges items in alphabetical order
+
+| "pipes" - pipes initial command into second command.
+e.g. cat volcanoes.txt | wc | cat > islands.txt
+pipes the first command combination ""XX | "wc" into "cat"
+uniq [file] - deletes adjacent items in file that are duplicates. i.e. "unique"
+sort [file] | uniq - deletes all duplicates in file (by piping into sort command first, 
+then all duplicates are adjacent!)
+
+grep stands for "global regular expression print"
+grep ABcd [file] - returns only terms with ABcd within the file.
+grep -i ABcd [file] - returns only terms with abcd (CASE INSENSITIVE) within the file.
+grep -R "string" /file/path - returns FILES with stating lines containing "string" (-R - Recursive)
+grep -Rl "string" /file/path - returns Files only, based on containing "string" (-l - files with matches only)
+
+sed s/"find string"/"replace string"/g [file]
+sed - "stream editor"
+s - substitution (always with find/replace strings)
+g - [optional] - global, replaces all strings that match, rather than the first in each line.
+
+ENVIRONMENTAL SETUP
+
+nano [filename] - opens simple text editor for a given file.
+prompts will ebe displayed below for the given program.
+
+clear - clears terminal for a restart.
+history - view all historically called commands.
+less [filename] - as for cat, only better at handling bigger files. requires a 'q' to quit
+
+$ nano ~/.bash_profile - known as the "bash profile" that contains the profile settings. 
+It will know to load the settings when the terminal is openned.
+. - makes the file hidden.
+~ - is the user's home directory
+
+source ~/.bash_profile - activates settings for use immediately (no need to close and enter again)
+alias [newcommand]= "[parentcommand]" - allows a custom shortcut to be created for the parent command
+
+[NAME]="String" - this will define a variable.
+export [NAME]="String" - makes variable allow 
+$[NAME] - always required to return the value of the variable.
+export PS1="Userdecide" - manually changes terminal prompt to "Userdecide"
+echo $HOME - home filepath directory
+echo $PATH - lists all directories separated by :
+**note that the bin directory holds a bunch of commands**
+env - lists all environmental variables (variables used across PROGRAMS and COMMANDS)
+
+----COMMAND PROMPT----
+
+cd Desktop\MattsRTIP\spookgit.github.io
+
+git status // current status of current repo
+git branch // check current branch
+
+git pull // pull current branch
+
+git branch lukesandboxrepo // creates new branch if none from the one you have checked-out
+git checkout lukesandboxrepo // Checkout the new branch
+
+git add -A // adds all changed/added (removed?) files in git
+git commit -m "comment" // pushed changes to the .git?? if you miss -m then esc :q (:wq if you want to save)
+git push // push current branmkdirch to the repo in the sky
+git push --set-upstream origin lukesandboxrepo // push current branch to specific online branch
+
+
+//merge changes from branch into master branch
+git checkout master
+git merge fuckabout //merge fuckabout branch into the master branch
+git push
+git branch -D fuckabout //delete branch that has been merged, we don't need it anymore, Capital D should delete the remote as well.
+
+ENVIRONMENT VARIABLES
+// Many pieces of information that shell compiles to determine its behaviour and resources.
+// Some contained within configuration settings,
+// others determined by user input.
+// Environment - are built by the shell every time that it starts a new session.
+// Environmnet - contains variables that define system properties.
+// Means to get or set settings; and pass these on to child processes.
+
+SYNTAX
+
+KEY=value:value2 # key value pairs. #multiple string values passed with ":" separation
+KEY="value with spaces"
+
+2 TYPES OF VARIABLES
+
+Environmental Variables
+- are variables that defined for the CURRENT shell and are inherited by any child shells or processes.
+- used to pass information into processes that are spawned from the shell.
+
+Shell Variables
+- variables that are contained exclusively within the shell in which they were set/defined.
+
+COMMANDS
+
+env OR printenv
+#prints list of enviro variables
+
+printenv SHELL
+# more specific functionality - retrieves values of specific var (e.g. SHELL)
+
+env VAR1="blahblah" command_to_run command_options
+# env allows you to modify a variable in the environment
+
+set
+# list of shell only variables
+
+sudo -i
+#change to root user in terminal
+
+cut -d: -f1 /etc/passwd
+# list of all local users
+
+
+

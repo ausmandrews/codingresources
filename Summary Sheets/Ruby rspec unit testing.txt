@@ -1,0 +1,111 @@
+RSPEC UNIT TESTING
+
+## SETUP ##
+
+INSTALL CORRECT GEMS
+gem install rspec
+gem install respec-its
+
+rspec --init
+# create a spec directory where "specs" go
+# do this from root directory
+
+ROOT FOLDER
+# select root folder with "spec" subfolder (holding tests)
+# execute: "rspec" from this root folder to run unit tests
+
+SETUP
+require 'test/unit' (MiniTest Only)
+
+OR
+
+require 'rspec'
+require 'rspec/its'
+
+AND
+require_relative 'file_to_be_tested'
+
+## TERMINAL COMMANDS ##
+
+rspec
+#runs all unit tests in spec subdirectory.
+
+rspec --format documentation
+# prints descriptors of each test / passing or failing
+
+## EXPRESSIONS ##
+
+RSPEC CORE
+
+describe()
+# "Describe" used to express concepts like a conversation
+# A set of related tests
+# top level method - no class: everything happens inside describe method
+
+it()
+# declare examples using the "it" method
+# used to define the ACTUAL Rspec specifications - i.e. examples
+# takes an OPTIONAL string that describes the behaviour being tested
+
+e.g.
+
+MEANING
+"Describe an order" 
+"It sums the prices of its line items"
+
+CODE
+RSpec.descrive Order do
+  it "sums the prices of its line items" do
+    ...
+  end
+end
+
+RSPEC EXPECTATIONS
+
+expect(...).to
+expect(...).not_to 
+
+# used to define positive or negative expectations.
+# e.g. expect (result).to eq(3)
+
+(...).should
+# define expectation
+
+is_expected.to 
+# Rspec way of measuring expectations
+
+MATCHERS
+
+to() / not_to()
+# takes single matcher parameter
+# example matcher parameters
+# - be_true
+# - be_false
+# - eq 3
+# - raise_error(SomeError)
+
+be_predicate matchers
+# if obj has a PREDICATE (boolean) method; you AUTOMATICALLY get a be_predicate matcher
+# example be_predicate:
+# be_even, be_odd
+
+respond_to(:method_name)
+# very basic test that a a subject is expected to respond to a given method method_name
+
+METHODS - RSPEC
+
+before()
+# code to execute before any testing
+# can pass in :all or :each
+
+after()
+# can pass in :all or :each
+
+METHODS - MINITEST
+
+setup()
+# sets up behaviour that will execute before every test method
+
+teardown()
+# make sure to tear it down as well, blank slate code prior to new suite of tests
+
